@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title><%= title %></title>
+  <link rel="stylesheet" type="text/css" href="/css/main.css">
+</head>
+<body>
+<div class="container">
+<% if(urlList.length != 0) { %>
+  <% urlList.forEach(function(url) { %>
+    <div class="item">
+    <span class="remove">&#10006;</span>
+    <a href="<%= url[0] %>"><%= url[1] %></a> 
+    <br>
+  </div>
+  <% }); %>
+<% } else { %>
+  <!-- <h3>Nothing to see here. Move along!</h3> -->
+<% } %>
+</div>
+<script type="text/javascript">
+  var remove = Array.prototype.slice.call(document.getElementsByClassName('remove'));
+  remove.forEach(function(el) {
+  // Add event listener
+    el.addEventListener('click', function(event) {
+      var toRemove = window.location.href + "remove?item=" + el.parentElement.children[1].innerHTML;
+      httpGet(toRemove);
+      location.reload();
+    });
+  });
+function httpGet(theUrl)
+{
+    var xmlHttp = null;
+
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false );
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+</script>
+</body>
+</html>
