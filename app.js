@@ -38,7 +38,7 @@ app.get('/*', function(req, res) {
   var urlList = [],
       url = req.originalUrl.slice(1);
 
-  if (url.length !== 0) {
+  if (url.length) {
     fetchPageTitle(url, function() {
       var pageTitle = this;
       res.render('added.ejs', {url:url, pageTitle:pageTitle});
