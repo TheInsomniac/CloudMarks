@@ -11,7 +11,7 @@
   <% urlList.forEach(function(url) { %>
     <div class="item">
     <span class="remove">&#10006;</span>
-    <a href="<%= url[0] %>" target="_blank"><%= url[1] %></a> 
+    <a href="<%= url[1] %>" target="_blank" name="<%= url[0] %>" id="<%= url[0] %>"><%= url[2] %></a> 
     <br>
   </div>
   <% }); %>
@@ -24,7 +24,8 @@
   remove.forEach(function(el) {
   // Add event listener
     el.addEventListener('click', function(event) {
-      var toRemove = window.location.href + "remove?item=" + el.parentElement.children[1].innerHTML;
+      var toRemove = window.location.href + "remove?item=" + el.parentElement.children[1].id;
+      //var toRemove = window.location.href + "remove?item=" + el.parentElement.children[1].name;
       httpGet(toRemove);
       location.reload();
     });

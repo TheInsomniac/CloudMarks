@@ -44,11 +44,11 @@ app.get('/*', function(req, res) {
       res.render('added.ejs', {url:url, pageTitle:pageTitle});
     });
   } else {
-    db.each('SELECT url, title FROM bookmarks', function(err, row) {
+    db.each('SELECT rowid, url, title FROM bookmarks', function(err, row) {
       if (err) {
         res.send('<h3>An Error has occurred!</h3>');
       } else {
-        urlList.push([row.url, row.title]);
+        urlList.push([row.rowid, row.url, row.title]);
       }
     }, function() {
       res.render('index.ejs', {urlList:urlList});
@@ -61,7 +61,7 @@ function addToDB(url, pageTitle) {
 }
 
 function removeFromDB(item) {
-  db.run('DELETE FROM bookmarks WHERE title = (?)', item);
+  db.run('DELETE FROM bookmarks WHERE rowid = (?)', item);
 }
 
 function fetchPageTitle(url, callback) {
