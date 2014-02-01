@@ -1,11 +1,11 @@
-var fs = require('fs'),
-    dbFile = __dirname + '/bookmarks.sql',
-    exists = fs.existsSync(dbFile),
+var fs      = require('fs'),
+    dbFile  = __dirname + '/bookmarks.sql',
+    exists  = fs.existsSync(dbFile),
     sqlite3 = require('sqlite3').verbose(),
-    db = new sqlite3.Database(dbFile);
+    db      = new sqlite3.Database(dbFile);
 
 var express = require('express'),
-    app = new express();
+    app     = new express();
 
 var request = require('request');
 
@@ -16,8 +16,10 @@ db.serialize(function() {
   }
 });
 
-app.engine('html', require('ejs').renderFile);
-app.locals.title = 'Bookmarks';
+//app.engine('html', require('ejs').renderFile);
+app.set('view engine', 'ejs');
+app.set('view options', {layout:false});
+app.locals.title = 'CloudMarks';
 
 app.use(express.favicon(__dirname + '/favicon.ico', { maxAge: 6000000 }));
 app.use(express.static(__dirname + '/static', { maxAge: 6000000 }));
