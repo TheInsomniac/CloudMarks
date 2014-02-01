@@ -25,17 +25,20 @@ h1,h2,h3,h4,h5,h6{
 
 a:link, a:hover, a:active, a:visited {
    text-decoration: none;
-   color: #373737;
+   color: white;
    font-family: "Montserrat", "Verdana";
  }
 
 .item{
-border: 1px solid;
-background: #faebd7;
-line-height: 32px;
-border-radius: 5px;
-padding: 5px;
-width: 65%;
+  border: 0;
+  border-left:0;
+  cursor: pointer;
+  background-color: rgba(0,0,0,.25);
+  height: 32px;
+  line-height: 32px;
+  padding: 5px;
+  width: 65%;
+  margin-bottom: 5px;
 }
 
 .remove {
@@ -43,3 +46,31 @@ width: 65%;
   cursor:pointer;
   padding-right: 5px;
 }
+
+button,
+.clear-all {
+  border:0;
+  background-color: transparent;
+  padding: 10px 20px;
+  color: white;
+  float: left;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.clear-all{
+  background-color: rgba(0,0,0,.25);
+  font:300 18px "Lato", "Arial", sans-serif;
+}
+
+button.disabled,
+.clear-all.disabled {
+  background-color: rgba(0,0,0,.25);
+  color: grey;
+}
+
+button.disabled .icon-trash,
+.clear-all.disabled .icon-trash {
+  color: #888
+}
+

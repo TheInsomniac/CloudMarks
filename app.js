@@ -26,7 +26,7 @@ app.use(express.static(__dirname + '/static', { maxAge: 6000000 }));
 
 app.get('/clear', function(req, res) {
   db.run('DELETE FROM bookmarks');
-  res.render('cleared.ejs');
+  res.send('Cleared');
 });
 
 app.get('/remove', function(req, res) {
@@ -43,6 +43,9 @@ app.get('/*', function(req, res) {
   if (url.length) {
     fetchPageTitle(url, function() {
       var pageTitle = this;
+      if (typeof pageTitle !== 'string'){
+        pageTitle = url;
+      }
       res.render('added.ejs', {url:url, pageTitle:pageTitle});
     });
   } else {

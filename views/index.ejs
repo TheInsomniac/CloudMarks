@@ -15,11 +15,18 @@
     <br>
   </div>
   <% }); %>
+    <button class="clear-all">Delete All</button>
 <% } else { %>
   <!-- <h3>Nothing to see here. Move along!</h3> -->
 <% } %>
 </div>
 <script type="text/javascript">
+  var clearAll = document.getElementsByClassName('clear-all')[0];
+  clearAll.addEventListener('click', function(event) {
+    httpGet(window.location.href + "clear");  
+    location.reload();
+  });
+
   var remove = Array.prototype.slice.call(document.getElementsByClassName('remove'));
   remove.forEach(function(el) {
   // Add event listener
