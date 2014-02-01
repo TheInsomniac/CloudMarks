@@ -1,6 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat);
 
 html {
+ height: 100%;
  background: rgb(51,51,51);
 }
 
