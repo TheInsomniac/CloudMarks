@@ -30,8 +30,8 @@ app.get('/clear', function(req, res) {
 });
 
 app.get('/remove', function(req, res) {
-  var item = unescape(req.query.item);
-  //console.log(item);
+  //var item = unescape(req.query.item);
+  var item = req.query.item;
   removeFromDB(item);
   res.end();
 });

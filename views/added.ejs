@@ -10,7 +10,7 @@
 <h3>Added:</h3>
 <% if(url) { %>
   <h3>URL: <%= url %></h3>
-  <h3>Title: <%= pageTitle %></h3>
+  <h3>Title: <%= unescape(pageTitle) %></h3>
 <% } %>
 </div>
 </body>

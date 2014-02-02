@@ -12,7 +12,7 @@
     <div class="item">
     <!-- <span class="remove">&#38;#10006;</span> -->
     <span class="remove"><img src="img/remove.png"/></span>
-    <a href="<%= url[1] %>" target="_blank" name="<%= url[0] %>" id="<%= url[0] %>"><%= url[2] %></a> 
+    <a href="<%= url[1] %>" target="_blank" name="<%= url[0] %>" id="<%= url[0] %>"><%= unescape(url[2]) %></a> 
     <br>
   </div>
   <% }); %>
