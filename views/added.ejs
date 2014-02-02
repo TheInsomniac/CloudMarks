@@ -12,6 +12,13 @@
   <h3>URL: <%= url %></h3>
   <h3>Title: <%= unescape(pageTitle) %></h3>
 <% } %>
+<button class="return">Return</button>
 </div>
+<script>
+  var goBack = document.getElementsByClassName('return')[0];
+  goBack.addEventListener('click', function(event) {
+    window.location.href = window.location.origin;  
+  });
+</script>
 </body>
 </html>

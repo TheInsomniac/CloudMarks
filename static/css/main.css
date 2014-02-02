@@ -63,7 +63,11 @@ button,
   font-size: 16px;
 }
 
-.clear-all{
+.return {
+  float: none;
+}
+
+.clear-all, .return{
   background-color: rgba(0,0,0,.25);
   font:300 18px "Montserrat", Helvetica, Verdana, sans-serif;
 }
