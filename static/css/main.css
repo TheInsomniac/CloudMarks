@@ -8,12 +8,12 @@ html {
 body {
  height: 100%;
  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
- box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5);
+/*  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5); */
 }
 
 .container {
+  width: 50%;
   margin-left: 25%;
-  /*margin-top: 7%;*/
   padding-top: 7%;
 }
 
@@ -23,10 +23,11 @@ h1,h2,h3,h4,h5,h6{
 	font-weight:100;
 }
 
-a:link, a:hover, a:active, a:visited {
+.item a:link, a:hover, a:active, a:visited {
    text-decoration: none;
    color: white;
    font-family: "Montserrat", "Verdana";
+   padding-left:5px;
  }
 
 .item{
@@ -34,17 +35,21 @@ a:link, a:hover, a:active, a:visited {
   border-left:0;
   cursor: pointer;
   background-color: rgba(0,0,0,.25);
-  height: 32px;
+  /* height: 32px; */
   line-height: 32px;
   padding: 5px;
-  width: 65%;
+  /* width: 65%; */
   margin-bottom: 5px;
 }
 
-.remove {
-  color: red;
-  cursor:pointer;
+.remove img {
+  /* color: red; */
+  cursor: pointer;
+  position: relative;
+  float: right;
+  padding-top: 8px;
   padding-right: 5px;
+  opacity: 0.3;
 }
 
 button,
@@ -53,14 +58,14 @@ button,
   background-color: transparent;
   padding: 10px 20px;
   color: white;
-  float: left;
+  float: right;
   cursor: pointer;
   font-size: 16px;
 }
 
 .clear-all{
   background-color: rgba(0,0,0,.25);
-  font:300 18px "Lato", "Arial", sans-serif;
+  font:300 18px "Montserrat", Helvetica, Verdana, sans-serif;
 }
 
 button.disabled,
