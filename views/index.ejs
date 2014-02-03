@@ -12,8 +12,9 @@
     <div class="item">
     <!-- <span class="remove">&#38;#10006;</span> -->
     <span class="remove"><img src="img/remove.png"/></span>
-    <a href="<%= url[1] %>" target="_blank" name="<%= url[0] %>" id="<%= url[0] %>"><%= unescape(url[2]) %></a> 
-    <br>
+<!--    <a href="<%= url[1] %>" target="_blank" name="<%= url[0] %>" id="<%= url[0] %>"><%= unescape(url[2]) %></a> -->
+        <a href="<%= url.url %>" target="_blank" name="<%= url._id %>" id="<%= url._id %>"><%= unescape(url.title) %></a>
+      <br>
   </div>
   <% }); %>
     <button class="clear-all">Delete All</button>
@@ -24,7 +25,7 @@
 <script type="text/javascript">
   var clearAll = document.getElementsByClassName('clear-all')[0];
   clearAll.addEventListener('click', function(event) {
-    httpGet(window.location.href + "clear");  
+    httpGet(window.location.href + "clear");
     location.reload();
   });
 

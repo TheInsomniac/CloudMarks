@@ -1,22 +1,14 @@
-var fs      = require('fs'),
-    dbFile  = __dirname + '/bookmarks.sql',
-    exists  = fs.existsSync(dbFile),
-    sqlite3 = require('sqlite3').verbose(),
-    db      = new sqlite3.Database(dbFile);
+var Datastore = require('nedb'),
+    db = new Datastore({
+      filename: __dirname + '/bookmarks.db',
+      autoload: true
+    });
 
 var express = require('express'),
     app     = new express();
 
 var request = require('request');
 
-db.serialize(function() {
-  if (!exists) {
-    console.log('Creating database structure...');
-    db.run('CREATE TABLE bookmarks (url TEXT, title TEXT)');
-  }
-});
-
-//app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'ejs');
 app.set('view options', {layout:false});
 app.locals.title = 'CloudMarks';
@@ -25,12 +17,11 @@ app.use(express.favicon(__dirname + '/favicon.ico', { maxAge: 6000000 }));
 app.use(express.static(__dirname + '/static', { maxAge: 6000000 }));
 
 app.get('/clear', function(req, res) {
-  db.run('DELETE FROM bookmarks');
+  db.remove({}, {multi: true});
   res.send('Cleared');
 });
 
 app.get('/remove', function(req, res) {
-  //var item = unescape(req.query.item);
   var item = req.query.item;
   removeFromDB(item);
   res.end();
@@ -43,30 +34,25 @@ app.get('/*', function(req, res) {
   if (url.length) {
     fetchPageTitle(url, function() {
       var pageTitle = this;
-      if (typeof pageTitle !== 'string'){
-        pageTitle = url;
-      }
       res.render('added.ejs', {url:url, pageTitle:pageTitle});
     });
   } else {
-    db.each('SELECT rowid, url, title FROM bookmarks', function(err, row) {
+    db.find({}, function(err, urlList) {
       if (err) {
         res.send('<h3>An Error has occurred!</h3>');
       } else {
-        urlList.push([row.rowid, row.url, row.title]);
-      }
-    }, function() {
       res.render('index.ejs', {urlList:urlList});
+      }
     });
   }
 });
 
 function addToDB(url, pageTitle) {
-  db.run('INSERT INTO bookmarks VALUES (?,?)', url, pageTitle);
+ db.insert({url:url, title:pageTitle});
 }
 
 function removeFromDB(item) {
-  db.run('DELETE FROM bookmarks WHERE rowid = (?)', item);
+  db.remove({_id:item}, {});
 }
 
 function fetchPageTitle(url, callback) {
