@@ -4,6 +4,10 @@ var Datastore = require('nedb'),
       autoload: true
     });
 
+// Auto compact database every 24 hours
+var compactInterval = 3600000 * 24; // milliseconds in hours * num hours
+db.persistence.setAutocompactionInterval(compactInterval);
+
 var express = require('express'),
     app     = new express();
 
