@@ -2,18 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title><%= title %></title>
   <link rel="stylesheet" type="text/css" href="/css/main.css">
-</head>
+  </head>
 <body>
 <div class="container">
 <% if(urlList.length) { %>
   <% urlList.forEach(function(url) { %>
     <div class="item">
-    <!-- <span class="remove">&#38;#10006;</span> -->
     <span class="remove"><img src="img/remove.png"/></span>
-<!--    <a href="<%= url[1] %>" target="_blank" name="<%= url[0] %>" id="<%= url[0] %>"><%= unescape(url[2]) %></a> -->
         <a href="<%= url.url %>" target="_blank" name="<%= url._id %>" id="<%= url._id %>"><%= unescape(url.title) %></a>
+    <span class="edit"><img src="img/pencil.png"/></span>
       <br>
   </div>
   <% }); %>
@@ -39,8 +41,46 @@
       location.reload();
     });
   });
-function httpGet(theUrl)
-{
+
+  var edit = Array.prototype.slice.call(document.getElementsByClassName('edit'));
+    edit.forEach(function(el) {
+      el.addEventListener('click', function(event) {
+        item = el.parentElement.children[1];
+        if (!item.hasAttribute('contenteditable')) {
+          item.setAttribute('contenteditable', 'true');
+          item.addEventListener('keydown', function (event) {
+            var esc = event.which == 27,
+                nl = event.which == 13,
+                el = event.target,
+                input = el.nodeName != 'INPUT' && el.nodeName != 'TEXTAREA',
+                data = [];
+
+            if (input) {
+              if (esc) {
+                // restore state
+                document.execCommand('undo');
+                el.blur();
+              } else if (nl) {
+                // save
+                data = [el.getAttribute('id'), el.innerHTML];
+                el.removeAttribute('contenteditable');
+
+                // ajax request to update the field
+                var toEdit = window.location.href + "edit?item=" + data[0] + "&title=" + data[1];
+                httpGet(toEdit);
+
+                el.blur();
+                event.preventDefault();
+              }
+            }
+          }, true);
+        } else {
+          item.removeAttribute('contenteditable');
+        }
+      });
+    });
+
+  function httpGet(theUrl) {
     var xmlHttp = null;
 
     xmlHttp = new XMLHttpRequest();

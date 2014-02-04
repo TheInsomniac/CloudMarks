@@ -27,6 +27,13 @@ app.get('/remove', function(req, res) {
   res.end();
 });
 
+app.get('/edit', function(req, res) {
+  var item = req.query.item,
+      title = req.query.title;
+  editItem(item, title);
+  res.end();
+});
+
 app.get('/*', function(req, res) {
   var urlList = [],
       url = req.originalUrl.slice(1);
@@ -53,6 +60,10 @@ function addToDB(url, pageTitle) {
 
 function removeFromDB(item) {
   db.remove({_id:item}, {});
+}
+
+function editItem(item, title) {
+  db.update({_id:item}, {$set:{title:title}}, {});
 }
 
 function fetchPageTitle(url, callback) {

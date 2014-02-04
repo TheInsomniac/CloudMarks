@@ -13,8 +13,9 @@ body {
 
 .container {
   width: 50%;
-  margin-left: 25%;
-  padding-top: 7%;
+/*margin-left: 25%;
+  padding-top: 7%;*/
+  margin: 7% auto;
 }
 
 h1,h2,h3,h4,h5,h6{
@@ -42,7 +43,7 @@ h1,h2,h3,h4,h5,h6{
   margin-bottom: 5px;
 }
 
-.remove img {
+.remove > img {
   /* color: red; */
   cursor: pointer;
   position: relative;
@@ -50,6 +51,15 @@ h1,h2,h3,h4,h5,h6{
   padding-top: 8px;
   padding-right: 5px;
   opacity: 0.3;
+}
+
+.edit > img {
+cursor: pointer;
+position:relative;
+float: right;
+padding-top: 8px;
+padding-right: 5px;
+opacity: 0.3;
 }
 
 button,
@@ -69,7 +79,7 @@ button,
 
 .clear-all, .return{
   background-color: rgba(0,0,0,.25);
-  font:300 18px "Montserrat", Helvetica, Verdana, sans-serif;
+  font:400 18px "Montserrat", Helvetica, Verdana, sans-serif;
 }
 
 button.disabled,
@@ -83,3 +93,28 @@ button.disabled .icon-trash,
   color: #888
 }
 
+[contenteditable] {
+  background-color: rgba(172, 167, 167, 0.3);
+  padding: 7px 6px 7px 0;
+}
+
+[contenteditable]:hover:after {
+  content: ' Enter to Submit. ESC to Undo.';
+  font-style: italic;
+  font-size: 12px;
+  font-family: sans-serif;
+  color: #000;
+  .text-stroke(0);
+}
+
+/*[contenteditable]:hover, [contenteditable]:focus {
+  background: #FFFFD3;
+}*/
+
+[contenteditable]:focus {
+  padding: 5px;
+}
+
+[contenteditable]:focus:after {
+  content: '';
+}
