@@ -13,10 +13,9 @@
 <% if(urlList.length) { %>
   <% urlList.forEach(function(url) { %>
     <div class="item">
-    <span class="remove"><img src="img/remove.png"/></span>
+    <img class="remove" src="img/remove.png"/>
         <a href="<%= url.url %>" target="_blank" name="<%= url._id %>" id="<%= url._id %>"><%= unescape(url.title) %></a>
-    <span class="edit"><img src="img/pencil.png"/></span>
-      <br>
+    <img class="edit" src="img/pencil.png"/>
   </div>
   <% }); %>
     <button class="clear-all">Delete All</button>
@@ -60,6 +59,7 @@
                 // restore state
                 document.execCommand('undo');
                 el.blur();
+                el.removeAttribute('contenteditable');
               } else if (nl) {
                 // save
                 data = [el.getAttribute('id'), el.innerHTML];
