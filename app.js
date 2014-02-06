@@ -20,6 +20,16 @@ app.locals.title = 'CloudMarks';
 app.use(express.favicon(__dirname + '/favicon.ico', { maxAge: 6000000 }));
 app.use(express.static(__dirname + '/static', { maxAge: 6000000 }));
 
+/* Truncate string at specified length or closest word boundary + ...
+   usage: mystring.trunc(78,true); */
+String.prototype.trunc =
+  function(n,useWordBoundary){
+    var tooLong = this.length>n,
+        s_ = tooLong ? this.substr(0,n-1) : this;
+    s_ = useWordBoundary && tooLong ? s_.substr(0,s_.lastIndexOf(' ')) : s_;
+    return  tooLong ? s_ + '&hellip;' : s_;
+  };
+
 app.get('/clear', function(req, res) {
   db.remove({}, {multi: true});
   res.send('Cleared');
@@ -79,6 +89,9 @@ function fetchPageTitle(url, callback) {
     }
     var match = re.exec(body);
     if (match && match[2]) {
+      if (match[2].length > 81) {
+        match[2] = match[2].trunc(77,true);
+      }
       addToDB(url, match[2]);
       callback.call(match[2]);
     } else {
