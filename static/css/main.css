@@ -40,11 +40,10 @@ h1,h2,h3,h4,h5,h6{
   border-left:0;
   cursor: pointer;
   background-color: rgba(0,0,0,.25);
-  /* height: 32px; */
   line-height: 32px;
   padding: 5px;
-  /* width: 65%; */
-  margin-bottom: 5px;
+  margin-bottom: 10px;
+  box-shadow: 3px 4px 5px 1px rgba(0, 0, 0, 0.35);
 }
 
 .remove {
@@ -84,6 +83,7 @@ button {
   background-color: rgba(0,0,0,.25);
   color: rgb(180,180,180);
   font:400 18px "Montserrat", Helvetica, Verdana, sans-serif;
+  box-shadow: 3px 4px 5px 1px rgba(0, 0, 0, 0.35);
 }
 
 .clear-all {
