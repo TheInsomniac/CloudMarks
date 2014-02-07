@@ -14,8 +14,8 @@
   <% urlList.forEach(function(url) { %>
     <div class="item">
       <img class="remove" src="img/remove.png"/>
-        <a href="<%= url.url %>" target="_blank" name="<%= url._id %>" id="<%= url._id %>"><%= unescape(url.title) %></a>
       <img class="edit" src="img/pencil.png"/>
+        <a href="<%= url.url %>" target="_blank" name="<%= url._id %>" id="<%= url._id %>"><%= unescape(url.title) %></a>
   </div>
   <% }); %>
     <button class="clear-all">Delete All</button>
@@ -38,7 +38,7 @@
   remove.forEach(function(el) {
   // Add event listener
     el.addEventListener('click', function(event) {
-      var toRemove = window.location.href + "remove?item=" + el.parentElement.children[1].id;
+      var toRemove = window.location.href + "remove?item=" + el.parentElement.children[2].id;
       //var toRemove = window.location.href + "remove?item=" + el.parentElement.children[1].name;
       httpGet(toRemove);
       location.reload();
@@ -48,7 +48,7 @@
   var edit = Array.prototype.slice.call(document.getElementsByClassName('edit'));
     edit.forEach(function(el) {
       el.addEventListener('click', function(event) {
-        item = el.parentElement.children[1];
+        item = el.parentElement.children[2];
         if (!item.hasAttribute('contenteditable')) {
           item.setAttribute('contenteditable', 'true');
           item.addEventListener('keydown', function (event) {
