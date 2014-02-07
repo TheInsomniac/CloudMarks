@@ -13,12 +13,16 @@
 <% if(urlList.length) { %>
   <% urlList.forEach(function(url) { %>
     <div class="item">
-    <img class="remove" src="img/remove.png"/>
+      <img class="remove" src="img/remove.png"/>
         <a href="<%= url.url %>" target="_blank" name="<%= url._id %>" id="<%= url._id %>"><%= unescape(url.title) %></a>
-    <img class="edit" src="img/pencil.png"/>
+      <img class="edit" src="img/pencil.png"/>
   </div>
   <% }); %>
     <button class="clear-all">Delete All</button>
+    <% if(httpAuth) { %>
+      <!-- THIS IS SUCH A HACK!!! -->
+      <button class="logout" onclick="location.href='http://log:out@' + window.location.host;">Logout</button>
+    <% } %>
 <% } else { %>
   <!-- <h3>Nothing to see here. Move along!</h3> -->
 <% } %>

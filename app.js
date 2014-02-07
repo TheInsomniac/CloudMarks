@@ -17,6 +17,10 @@ app.set('view engine', 'ejs');
 app.set('view options', {layout:false});
 app.locals.title = 'CloudMarks';
 
+/* If using Apache or NGINX simple http auth and need a way to log out
+   A "Logout" button will appear on the index page                     */
+app.locals.httpAuth = true;
+
 app.use(express.favicon(__dirname + '/favicon.ico', { maxAge: 6000000 }));
 app.use(express.static(__dirname + '/static', { maxAge: 6000000 }));
 
@@ -62,7 +66,7 @@ app.get('/*', function(req, res) {
       if (err) {
         res.send('<h3>An Error has occurred!</h3>');
       } else {
-      res.render('index.ejs', {urlList:urlList});
+        res.render('index.ejs', {urlList:urlList});
       }
     });
   }

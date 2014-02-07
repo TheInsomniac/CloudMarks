@@ -24,14 +24,18 @@ h1,h2,h3,h4,h5,h6{
 	font-weight:100;
 }
 
-.item a:link, a:hover, a:active, a:visited {
+.item a:link, a:active, a:visited {
    text-decoration: none;
    color: rgb(180,180,180);
    font-family: "Montserrat", "Verdana";
    padding-left:5px;
  }
 
-.item{
+.item a:hover {
+  color: rgb(230, 76, 101);
+}
+
+.item {
   border: 0;
   border-left:0;
   cursor: pointer;
@@ -54,32 +58,33 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .edit {
-cursor: pointer;
-position:relative;
-float: right;
-padding-top: 8px;
-padding-right: 5px;
-opacity: 0.3;
+  cursor: pointer;
+  position:relative;
+  float: right;
+  padding-top: 8px;
+  padding-right: 5px;
+  opacity: 0.3;
 }
 
-button,
-.clear-all {
+button {
   border:0;
-  background-color: transparent;
   padding: 10px 20px;
-  color: rgb(180,180,180);
-  float: right;
   cursor: pointer;
-  font-size: 16px;
+  background-color: rgba(0,0,0,.25);
+  color: rgb(180,180,180);
+  font:400 18px "Montserrat", Helvetica, Verdana, sans-serif;
+}
+
+.clear-all {
+  float: right;
 }
 
 .return {
   float: none;
 }
 
-.clear-all, .return{
-  background-color: rgba(0,0,0,.25);
-  font:400 18px "Montserrat", Helvetica, Verdana, sans-serif;
+button:hover {
+  color: rgb(230, 76, 101);  
 }
 
 button.disabled,
