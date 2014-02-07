@@ -48,7 +48,7 @@ h1,h2,h3,h4,h5,h6{
 }
 
 .remove {
-  /* color: red; */
+  content:url(/img/remove.png);
   cursor: pointer;
   position: relative;
   float: right;
@@ -57,13 +57,24 @@ h1,h2,h3,h4,h5,h6{
   opacity: 0.3;
 }
 
+.remove:hover {
+  content: url(/img/remove_hover_red.png);
+  opacity: 1.0;
+}
+
 .edit {
+  content: url(/img/pencil.png);
   cursor: pointer;
   position:relative;
   float: right;
   padding-top: 8px;
   padding-right: 5px;
   opacity: 0.3;
+}
+
+.edit:hover {
+  content: url(/img/pencil_hover_green.png);
+  opacity: 1.0;
 }
 
 button {

@@ -13,8 +13,8 @@
 <% if(urlList.length) { %>
   <% urlList.forEach(function(url) { %>
     <div class="item">
-      <img class="remove" src="img/remove.png"/>
-      <img class="edit" src="img/pencil.png"/>
+      <span class="remove"></span>
+      <span class="edit"></span>
         <a href="<%= url.url %>" target="_blank" name="<%= url._id %>" id="<%= url._id %>"><%= unescape(url.title) %></a>
   </div>
   <% }); %>
