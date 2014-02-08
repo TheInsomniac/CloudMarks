@@ -1,0 +1,112 @@
+@grey: #333;
+@text: #B4B4B4;
+@button: rgba(0,0,0,0.25);
+@orange: #e64c65;
+
+body {
+    background: @grey;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    font-family:"Montserrat",Helvetica,Verdana,Arial,Sans-Serif;
+}
+.container {
+    width: 60%;
+    margin: 7% auto;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    color: @orange;
+    font-weight:100;
+}
+
+.item {
+    border: 0;
+    border-left:0;
+    cursor: pointer;
+    background-color: @button;
+    line-height: 32px;
+    padding: 5px;
+    margin-bottom: 10px;
+    box-shadow: 3px 4px 5px 1px rgba(0, 0, 0, 0.35);
+    & > a:link, & > a:active, & > a:visited {
+        text-decoration: none;
+        color: @text;
+        padding-left: 5px;  
+    }
+     & > a:hover {
+        color: @orange;
+    }
+}
+
+.remove {
+    display: block;
+    background: url(/img/remove.png);
+    background-repeat: no-repeat;
+    cursor: pointer;
+    position: relative;
+    float: right;
+    margin-top: 7px;
+    padding-top: 16px;
+    padding-right: 16px;
+    opacity: 0.3;
+    &:hover {
+      background: url(/img/remove_hover_red.png);
+      opacity: 1.0;
+    }
+}
+
+.edit {
+    display: block;
+    background: url(/img/pencil.png);
+    background-repeat: no-repeat;
+    cursor: pointer;
+    position:relative;
+    float: right;
+    margin-top: 7px;
+    margin-right: 5px;
+    padding-top: 16px;
+    padding-right: 16px;
+    opacity: 0.3;
+    &:hover {
+      background: url(/img/pencil_hover_green.png);
+      opacity: 1.0;
+    }
+}
+
+button {
+    border:0;
+    padding: 10px 20px;
+    cursor: pointer;
+    background-color: @button;
+    color: @text;
+    font:400 18px "Montserrat", Helvetica, Verdana, sans-serif;
+    box-shadow: 3px 4px 5px 1px rgba(0, 0, 0, 0.35);
+    &:hover {
+        color: @orange;
+    }
+}
+
+.clear-all {
+    float: right;
+}
+
+.return {
+    float: none;
+}
+
+[contenteditable] {
+    background-color: rgba(172, 167, 167, 0.3);
+    padding: 7px 6px 7px 0;
+    &:hover:after {
+        content: ' Enter to Submit. ESC to Undo.';
+        font-style: italic;
+        font-size: 12px;
+        font-family: sans-serif;
+        color: #000;
+    }
+    &:focus {
+        padding: 5px;
+    }
+    &:focus:after {
+        content: '';
+    }
+}

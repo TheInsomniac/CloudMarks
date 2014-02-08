@@ -1,136 +1,106 @@
-@import url(http://fonts.googleapis.com/css?family=Montserrat);
-
-html {
-/*  height: 100%; */
- background: rgb(51,51,51);
-}
-
 body {
-/*  height: 100%; */
- text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
-/*  box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.5); */
+  background: #333333;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+  font-family: "Montserrat", Helvetica, Verdana, Arial, Sans-Serif;
 }
-
 .container {
   width: 60%;
-/*margin-left: 25%;
-  padding-top: 7%;*/
   margin: 7% auto;
 }
-
-h1,h2,h3,h4,h5,h6{
-	color:#e64c65;
-	font-family:"Montserrat",Helvetica,Verdana,Arial,Sans-Serif;
-	font-weight:100;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: #e64c65;
+  font-weight: 100;
 }
-
-.item a:link, a:active, a:visited {
-   text-decoration: none;
-   color: rgb(180,180,180);
-   font-family: "Montserrat", "Verdana";
-   padding-left:5px;
- }
-
-.item a:hover {
-  color: rgb(230, 76, 101);
-}
-
 .item {
   border: 0;
-  border-left:0;
+  border-left: 0;
   cursor: pointer;
-  background-color: rgba(0,0,0,.25);
+  background-color: rgba(0, 0, 0, 0.25);
   line-height: 32px;
   padding: 5px;
   margin-bottom: 10px;
   box-shadow: 3px 4px 5px 1px rgba(0, 0, 0, 0.35);
 }
-
+.item > a:link,
+.item > a:active,
+.item > a:visited {
+  text-decoration: none;
+  color: #b4b4b4;
+  padding-left: 5px;
+}
+.item > a:hover {
+  color: #e64c65;
+}
 .remove {
-  content:url(/img/remove.png);
+  display: block;
+  background: url(/img/remove.png);
+  background-repeat: no-repeat;
   cursor: pointer;
   position: relative;
   float: right;
-  padding-top: 8px;
-  padding-right: 5px;
+  margin-top: 7px;
+  padding-top: 16px;
+  padding-right: 16px;
   opacity: 0.3;
 }
-
 .remove:hover {
-  content: url(/img/remove_hover_red.png);
+  background: url(/img/remove_hover_red.png);
   opacity: 1.0;
 }
-
 .edit {
-  content: url(/img/pencil.png);
+  display: block;
+  background: url(/img/pencil.png);
+  background-repeat: no-repeat;
   cursor: pointer;
-  position:relative;
+  position: relative;
   float: right;
-  padding-top: 8px;
-  padding-right: 5px;
+  margin-top: 7px;
+  margin-right: 5px;
+  padding-top: 16px;
+  padding-right: 16px;
   opacity: 0.3;
 }
-
 .edit:hover {
-  content: url(/img/pencil_hover_green.png);
+  background: url(/img/pencil_hover_green.png);
   opacity: 1.0;
 }
-
 button {
-  border:0;
+  border: 0;
   padding: 10px 20px;
   cursor: pointer;
-  background-color: rgba(0,0,0,.25);
-  color: rgb(180,180,180);
-  font:400 18px "Montserrat", Helvetica, Verdana, sans-serif;
+  background-color: rgba(0, 0, 0, 0.25);
+  color: #b4b4b4;
+  font: 400 18px "Montserrat", Helvetica, Verdana, sans-serif;
   box-shadow: 3px 4px 5px 1px rgba(0, 0, 0, 0.35);
 }
-
+button:hover {
+  color: #e64c65;
+}
 .clear-all {
   float: right;
 }
-
 .return {
   float: none;
 }
-
-button:hover {
-  color: rgb(230, 76, 101);  
-}
-
-button.disabled,
-.clear-all.disabled {
-  background-color: rgba(0,0,0,.25);
-  color: grey;
-}
-
-button.disabled .icon-trash,
-.clear-all.disabled .icon-trash {
-  color: #888
-}
-
 [contenteditable] {
   background-color: rgba(172, 167, 167, 0.3);
   padding: 7px 6px 7px 0;
 }
-
 [contenteditable]:hover:after {
   content: ' Enter to Submit. ESC to Undo.';
   font-style: italic;
   font-size: 12px;
   font-family: sans-serif;
   color: #000;
-  .text-stroke(0);
 }
-
-/*[contenteditable]:hover, [contenteditable]:focus {
-  background: #FFFFD3;
-}*/
-
 [contenteditable]:focus {
   padding: 5px;
 }
-
 [contenteditable]:focus:after {
   content: '';
 }
