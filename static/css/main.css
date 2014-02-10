@@ -7,6 +7,12 @@ body {
   width: 60%;
   margin: 7% auto;
 }
+@media (max-width: 1024px) {
+  .container {
+    width: 90%;
+    margin: auto;
+  }
+}
 h1,
 h2,
 h3,
