@@ -40,6 +40,7 @@ h6 {
   padding-left: 5px;
 }
 .item > a:hover {
+  transition: all 0.3s ease-out;
   color: #e64c65;
 }
 .remove {
@@ -57,6 +58,7 @@ h6 {
 .remove:hover {
   background: url(/img/remove_hover_red.png);
   opacity: 1.0;
+  transition: all 0.3s ease-out;
 }
 .edit {
   display: block;
@@ -74,6 +76,7 @@ h6 {
 .edit:hover {
   background: url(/img/pencil_hover_green.png);
   opacity: 1.0;
+  transition: all 0.3s ease-out;
 }
 button {
   border: 0;
@@ -86,6 +89,7 @@ button {
 }
 button:hover {
   color: #e64c65;
+  transition: all 0.3s ease-out;
 }
 .clear-all {
   float: right;
