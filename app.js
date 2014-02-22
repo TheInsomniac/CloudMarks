@@ -66,6 +66,11 @@ app.get('/*', function(req, res) {
       if (err) {
         res.send('<h3>An Error has occurred!</h3>');
       } else {
+        urlList.sort(function(a,b) {
+          var c = new Date(a.date),
+              d = new Date(b.date);
+          return d-c;
+        });
         res.render('index.ejs', {urlList:urlList});
       }
     });
@@ -73,7 +78,9 @@ app.get('/*', function(req, res) {
 });
 
 function addToDB(url, pageTitle) {
- db.insert({url:url, title:pageTitle});
+ var d = new Date();
+ d = d.toString();
+ db.insert({date: d, url:url, title:pageTitle});
 }
 
 function removeFromDB(item) {
