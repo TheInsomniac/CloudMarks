@@ -1,13 +1,14 @@
 {
   "name": "CloudMarks",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Web Based Bookmarking App",
   "main": "app.js",
   "dependencies": {
     "ejs": "~0.8.5",
     "express": "~3.4.8",
     "request": "~2.33.0",
-    "nedb": "~0.10.1"
+    "nedb": "~0.10.1",
+    "socket.io": "~0.9.16"
   },
   "devDependencies": {},
   "scripts": {
@@ -18,7 +19,13 @@
     "url": "https://github.com/TheInsomniac/CloudMarks"
   },
   "keywords": [
-    "bookmark"
+    "bookmark",
+    "express",
+    "cloud",
+    "ejs",
+    "request",
+    "socket.io",
+    "nedb"
   ],
   "author": "The Insomniac",
   "license": "MIT",

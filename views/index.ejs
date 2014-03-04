@@ -2,32 +2,20 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">-->
   <title><%= title %></title>
   <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" type="text/css" href="/css/main.css">
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript" src="/js/main.js"></script>
+  <script type="text/javascript" src="/js/socket.js"></script>
   </head>
 <body>
-<div class="container">
-<% if(urlList.length) { %>
-  <% urlList.forEach(function(url) { %>
-    <div class="item">
-      <span class="remove"></span>
-      <span class="edit"></span>
-        <a href="<%= url.url %>" target="_blank" name="<%= url._id %>" id="<%= url._id %>"><%= unescape(url.title) %></a>
-  </div>
-  <% }); %>
-    <button class="clear-all">Delete All</button>
+<footer>
+    <button class="clearAll">Delete All</button>
     <% if(httpAuth) { %>
       <!-- THIS IS SUCH A HACK!!! -->
       <button class="logout" onclick="location.href='http://log:out@' + window.location.host;">Logout</button>
     <% } %>
-<% } else { %>
-  <!-- <h3>Nothing to see here. Move along!</h3> -->
-<% } %>
-</div>
-<script type="text/javascript" src="/js/main.js"></script>
+</footer>
 </body>
 </html>

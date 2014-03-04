@@ -7,10 +7,18 @@ body {
   width: 60%;
   margin: 7% auto;
 }
+footer {
+  width: 60%;
+  margin: -5em auto;
+}
 @media (max-width: 1024px) {
   .container {
     width: 90%;
     margin: auto;
+  }
+  footer {
+    width: 90%;
+    margin: 0 auto;
   }
 }
 h1,
@@ -91,7 +99,7 @@ button:hover {
   color: #e64c65;
   transition: all 0.3s ease-out;
 }
-.clear-all {
+.clearAll {
   float: right;
 }
 .return {
