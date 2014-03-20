@@ -37,10 +37,31 @@
     }
   }
 
+	document.addEventListener('paste', function (e) {
+		var data;
+		e.preventDefault();
+		// IE
+		if (window.clipboardData) {
+			data = window.clipboardData.getData('Text');
+		// Standard-compliant browsers
+		} else {
+			data = e.clipboardData.getData('text');
+		}
+		//console.log('paste', data);
+		httpGet(window.location.href + data);
+	});
+
+function httpGet(theUrl) {
+    var xmlHttp = null;
+    xmlHttp = new XMLHttpRequest();
+    xmlHttp.open( "GET", theUrl, false );
+    xmlHttp.send( null );
+    return xmlHttp.responseText;
+}
+
   window.onload = function () {
     var clearAll = document.getElementsByClassName('clearAll')[0];
     clearAll.addEventListener('click', function (event) {
-      //httpGet(window.location.href + "clear");
       socket.emit('clearAll', null);
       location.reload();
     });
