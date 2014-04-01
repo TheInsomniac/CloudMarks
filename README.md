@@ -1,4 +1,4 @@
-###Bookmarking Service built upon Node.js, Express, NeDB, Request, and Socket.IO
+###Bookmarking Service built upon Node.js, Express, NeDB/Mongo, Request, and Socket.IO
 Allows one to quickly and easily bookmark a site for future reference. Saves the
 URL and Page title.
 

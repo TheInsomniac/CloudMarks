@@ -1,12 +1,19 @@
-var Datastore = require('nedb'),
-  db = new Datastore({
-    filename: __dirname + '/bookmarks.db',
-    autoload: true
-  });
+var dbType = "mongo";
+// var dbType = "nedb";
 
-// Auto compact database every 24 hours
-var compactInterval = 3600000 * 24; // milliseconds in hours * num hours
-db.persistence.setAutocompactionInterval(compactInterval);
+if (dbType === "mongo") {
+  var Datastore = require('monk')('localhost/cloudmarks'),
+      db = Datastore.get('bookmarks');
+} else {
+  var Datastore = require('nedb'),
+      db = new Datastore({
+        filename: __dirname + '/bookmarks.db',
+        autoload: true
+      });
+   /* Auto compact database every 24 hours */
+  var compactInterval = 3600000 * 24; // milliseconds in hours * num hours
+  db.persistence.setAutocompactionInterval(compactInterval);
+}
 
 var express = require('express'),
   app = new express(),
