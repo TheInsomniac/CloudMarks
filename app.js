@@ -1,13 +1,19 @@
-var dbType = "mongo";
-// var dbType = "nedb";
+/* If Mongo */
+var dbType = 'mongo';
+var dsLocation = 'localhost/cloudmarks';
+var dsName = 'bookmarks';
 
-if (dbType === "mongo") {
-  var Datastore = require('monk')('localhost/cloudmarks'),
-      db = Datastore.get('bookmarks');
+/* If NeDB json store */
+// var dbType = "nedb";
+// var dsName = '/bookmarks.db'; // relative to cwd
+
+if (dbType === 'mongo') {
+  var Datastore = require('monk')(dsLocation),
+      db = Datastore.get(dsName);
 } else {
   var Datastore = require('nedb'),
       db = new Datastore({
-        filename: __dirname + '/bookmarks.db',
+        filename: __dirname + dsName,
         autoload: true
       });
    /* Auto compact database every 24 hours */
@@ -17,12 +23,18 @@ if (dbType === "mongo") {
 
 var express = require('express'),
   app = new express(),
+  /* Express 4.x body-parse for urlencode and json */
+  bodyParser = require('body-parser'),
+  favicon = require('static-favicon'),
   server = require('http').createServer(app),
   io = require('socket.io').listen(server),
   request = require('request');
 
 /* Reduce Socket.IO Logging */
 io.set('log level', 1);
+
+/* Express 4.x body-parser for urlencode and json */
+app.use(bodyParser());
 
 app.set('view engine', 'ejs');
 app.set('view options', {
@@ -36,7 +48,7 @@ app.locals.title = 'CloudMarks';
    A "Logout" button will appear on the index page if 'true' */
 app.locals.httpAuth = false;
 
-app.use(express.favicon(__dirname + '/favicon.ico', {
+app.use(favicon(__dirname + '/favicon.ico', {
   maxAge: 6000000
 }));
 app.use(express.static(__dirname + '/static', {

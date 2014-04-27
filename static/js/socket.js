@@ -1,5 +1,8 @@
 /* Change this to the URL for your server if not just running locally */
-var socket = io.connect('http://localhost');
+var socketURL = 'http://localhost:3000';
+
+/* Initialize Socket */
+var socket = io.connect(socketURL);
 
 /* On Reconnect remove old container */
 socket.on('reconnect', function () {

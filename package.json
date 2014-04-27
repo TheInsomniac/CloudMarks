@@ -1,14 +1,16 @@
 {
   "name": "CloudMarks",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Web Based Bookmarking App",
   "main": "app.js",
   "dependencies": {
-    "ejs": "~0.8.5",
-    "express": "~3.4.8",
-    "request": "~2.33.0",
-    "socket.io": "~0.9.16",
-    "monk": "^0.8.1"
+    "ejs": "~1.0.x",
+    "express": "~4.1.x",
+    "body-parser": "~1.0.x",
+    "static-favicon": "~1.0.x",
+    "request": "~2.34.x",
+    "socket.io": "~0.9.x",
+    "monk": "~0.8.x"
   },
   "devDependencies": {},
   "scripts": {
@@ -20,6 +22,7 @@
   },
   "keywords": [
     "bookmark",
+    "express4",
     "express",
     "cloud",
     "ejs",
