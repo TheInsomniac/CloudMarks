@@ -7,12 +7,13 @@ body {
     background: @grey;
     text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
     font-family:"Montserrat",Helvetica,Verdana,Arial,Sans-Serif;
+    font-size: 100%;
 }
 .container {
     width: 60%;
     margin: 7% auto;
 }
-footer { 
+footer {
   width: 60%;
   margin: -5em auto;
 };
@@ -34,6 +35,7 @@ h1,h2,h3,h4,h5,h6 {
 }
 
 .item {
+    position: relative;
     border: 0;
     border-left:0;
     cursor: pointer;
@@ -45,7 +47,7 @@ h1,h2,h3,h4,h5,h6 {
     & > a:link, & > a:active, & > a:visited {
         text-decoration: none;
         color: @text;
-        padding-left: 5px;  
+        padding-left: 5px;
     }
      & > a:hover {
         transition: all 0.3s ease-out;
@@ -114,18 +116,50 @@ button {
 
 [contenteditable] {
     background-color: rgba(172, 167, 167, 0.3);
-    padding: 7px 6px 7px 0;
-    &:hover:after {
+//    padding: 7px 6px 7px 0;
+    outline: none;
+    border: 1px solid #777;
+    border-radius: 3px;
+    &:focus:before {
+        content: ' Enter to Submit. ESC to Undo.';
+//        font-style: italic;
+        font-size: 12px;
+//        font-family: sans-serif;
+        background-color: #e64c65;
+        color: #b4b4b4;
+        border: 1px solid #B1384C;
+        border-radius: 3px;
+        position: absolute;
+        left: 37%;
+        bottom: 50px;
+        padding-left: 5px;
+        padding-right: 5px;
+    }
+    &:focus:after {
+        position: absolute;
+        content: "";
+        left: 48.5%;
+        bottom: 39px;
+        width: 0;
+        height: 0;
+        border-left: 12px solid transparent;
+        border-right: 12px solid transparent;
+        border-top: 12px solid #e64c65;
+    }
+   /*  &:focus:after {
         content: ' Enter to Submit. ESC to Undo.';
         font-style: italic;
         font-size: 12px;
         font-family: sans-serif;
         color: #000;
-    }
+        position: relative;
+        top: -2px;
+        left: 2px;
+    } */
     &:focus {
-        padding: 5px;
-    }
-    &:focus:after {
-        content: '';
+        padding-top: 5px;
+        padding-bottom: 5px;
+        padding-left: 5px;
+        padding-right: 10px;
     }
 }

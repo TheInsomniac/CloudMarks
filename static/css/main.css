@@ -2,6 +2,7 @@ body {
   background: #333333;
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
   font-family: "Montserrat", Helvetica, Verdana, Arial, Sans-Serif;
+  font-size: 100%;
 }
 .container {
   width: 60%;
@@ -31,6 +32,7 @@ h6 {
   font-weight: 100;
 }
 .item {
+  position: relative;
   border: 0;
   border-left: 0;
   cursor: pointer;
@@ -107,18 +109,47 @@ button:hover {
 }
 [contenteditable] {
   background-color: rgba(172, 167, 167, 0.3);
-  padding: 7px 6px 7px 0;
+  outline: none;
+  border: 1px solid #777;
+  border-radius: 3px;
+  /*  &:focus:after {
+        content: ' Enter to Submit. ESC to Undo.';
+        font-style: italic;
+        font-size: 12px;
+        font-family: sans-serif;
+        color: #000;
+        position: relative;
+        top: -2px;
+        left: 2px;
+    } */
 }
-[contenteditable]:hover:after {
+[contenteditable]:focus:before {
   content: ' Enter to Submit. ESC to Undo.';
-  font-style: italic;
   font-size: 12px;
-  font-family: sans-serif;
-  color: #000;
-}
-[contenteditable]:focus {
-  padding: 5px;
+  background-color: #e64c65;
+  color: #b4b4b4;
+  border: 1px solid #B1384C;
+  border-radius: 3px;
+  position: absolute;
+  left: 37%;
+  bottom: 50px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 [contenteditable]:focus:after {
-  content: '';
+  position: absolute;
+  content: "";
+  left: 48.5%;
+  bottom: 39px;
+  width: 0;
+  height: 0;
+  border-left: 12px solid transparent;
+  border-right: 12px solid transparent;
+  border-top: 12px solid #e64c65;
+}
+[contenteditable]:focus {
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 10px;
 }
