@@ -70,7 +70,10 @@ String.prototype.trunc =
  * Else display index page */
 app.get('/*', function (req, res) {
   var url = req.originalUrl.slice(1);
-  if (url.length) {
+  // Ensure that the request matches the form http[s]:// or ftp:// so as to avoid
+  // things like robots.txt and sitemap.xml
+  var re = /^(https?|ftp):\/\//i;
+  if (url.length && re.test(url)) {
     fetchPageTitle(url, function () {
       var pageTitle = this;
       res.render('added.ejs', {
